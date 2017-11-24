@@ -41,7 +41,7 @@ while (score < scoreLimit && i < maxIterations)
             j = s(3);
         end
         for k = 1:j
-            [answer] = PlotPlane( returnValue(:,:,k) ,0);
+            [answer] = planePlot( returnValue(:,:,k) ,0);
              para = corner2para(answer);
             [ sumOfdist, score , cset] = RansacScore(num,X,Y,Z,para );
             if score>Finalscore
