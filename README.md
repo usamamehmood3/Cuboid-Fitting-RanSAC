@@ -11,7 +11,7 @@ Run:
   In runme.m these point-clouds are used as examples.
   
   In runme.m Load your 3D data in this format:
-    X - x-coordiantes of point data, row vector  
-    Y - y-coordiantes of point data, row vector 
+    X - x-coordiantes of point data, row vector
+    Y - y-coordiantes of point data, row vector
     Z - z-coordiantes of point data, row vector 
   
