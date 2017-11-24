@@ -10,15 +10,15 @@ function [xyz] = rpy(R)
 % $Id: rpy.m,v 1.1 2009-03-17 16:40:18 bradleyk Exp $
 % Copyright (C) 2005, by Brad Kratochvil
 
-if ~isrot(R),
+if ~isrot(R)
   error('R is not a rotation matrix');
 end
 
 beta = atan2(-R(3,1), sqrt(R(1,1)^2 + R(2,1)^2));
-if isequalf(beta, pi/2),
+if isequalf(beta, pi/2)
   alpha = 0;
   gamma = atan2(R(1,2), R(2,2));
-elseif isequalf(beta, -pi/2),
+elseif isequalf(beta, -pi/2)
   alpha = 0;
   gamma = -atan2(R(1,2), R(2,2));
 else

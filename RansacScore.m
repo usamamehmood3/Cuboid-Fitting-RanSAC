@@ -14,7 +14,6 @@ for i = 1:6
     n = n/norm(n);
     d = dot( corners(1,:),n);
     d=round(d*10^4)/10^4;
-%     C = [-n(1)/n(3) -n(2)/n(3) d/n(3)];
     C = [n -d];
     
     [pp, dz] = dist2plane(po,C);
@@ -23,7 +22,6 @@ for i = 1:6
     [result] = boundTest(X,Y,Z,pp,corners);
     cset = cset | (result & (dz<num)');
     dz = dz( indices(result) );
-    score = score + sum(dz<num);
     score = sum(cset);
 end
 % cset = indices(cset);
