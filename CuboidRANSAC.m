@@ -1,12 +1,11 @@
-function [model, FinalPara, Finalscore] = CuboidRANSAC( X, Y, Z )
+function [model, FinalPara, Finalscore] = CuboidRANSAC( points3D )
 %CuboidRANSAC - Computes the best fitting cuboid on the 3D points using RANSAC. 
 % If 90 percent points are in the consensus set or 300 iterations are
 % reached, the code terminates and the current best is returned.
 %
-% Inputs:
-%    X - x-coordiantes of point data, row vector  
-%    Y - y-coordiantes of point data, row vector 
-%    Z - z-coordiantes of point data, row vector 
+% Inputs: 
+%    points3D - nx3 Matric containing the 3D points placed in rows.
+%               points3D = [X, Y, Z]
 %
 % Outputs:
 %    model - 8x3 Matric containing the corners of the best-fit cuboid
@@ -19,6 +18,10 @@ function [model, FinalPara, Finalscore] = CuboidRANSAC( X, Y, Z )
 % Website: https://usamamehmood.weebly.com
 % Novemnber 2014; Last revision: 23-Nov-2017
 %------------- BEGIN CODE --------------
+X = points3D(:, 1);
+Y = points3D(:, 2);
+Z = points3D(:, 3);
+
 dia = sqrt((max(X) - min(X))^2 + (max(Y) - min(Y))^2 + (max(Z) - min(Z))^2);
 num =dia/250; % Tolerance for consensus set.
 

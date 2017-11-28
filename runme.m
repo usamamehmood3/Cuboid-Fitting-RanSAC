@@ -7,10 +7,11 @@ close all
 dir = '3D Point Data/';
 fname = 'Box.mat';
 load([dir fname]);
+points3D = [X Y Z];
 %% RANSAC
-[model, FinalPara, Finalscore] = CuboidRANSAC( X, Y, Z );
+[model, FinalPara, Finalscore] = CuboidRANSAC( points3D );
 %% PLot Cuboid with the point cloud.
-DisplayModel( X, Y, Z, Finalscore, model)
+DisplayModel(points3D, Finalscore, model);
 
 
 
