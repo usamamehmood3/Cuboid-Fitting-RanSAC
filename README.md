@@ -1,7 +1,7 @@
 # Cuboid-Fitting-RanSAC
 RanSaC based cuboid fitting heuristic
 
-##Run:
+## Run:
 
   Use runme.m to execute the program.
 
@@ -16,9 +16,9 @@ RanSaC based cuboid fitting heuristic
     where,
     X - x-coordiantes of point data, column vector
     Y - y-coordiantes of point data, column vector
-    Z - z-coordiantes of point data, column vector
-    
-##Main Function:
+    Z - z-coordiantes of point data, column vector   
+---    
+## CuboidRANSAC:
 
 [model, CuboidParameters, inlierIndices, outlierIndices] = CuboidRANSAC( points3D )
 CuboidRANSAC - Computes the best fitting cuboid on the 3D points using RANSAC. 
