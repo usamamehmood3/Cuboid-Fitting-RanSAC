@@ -1,6 +1,6 @@
 function [ answer ] = planePlot( b , flag )
 %Solves for points of intersection of 6 planes.
-%if flag =1 then plot ALSO , if zero then do not plot.
+%if flag = 1 then plot the six planes , if zero then do not plot.
 answer = zeros(20,3);
 normals = b(1:3,:);
 normals = transpose(normals);
@@ -17,7 +17,7 @@ end
 v1 = find(transpose(1:20).*(sum(answer,2)~=0));%non zero row #
 % disp(v1);
 answer = answer(v1,:);
-if flag==1
+if flag == 1
     Cmb = Cmb(v1,:);
     f = [1 2 4 3];
     cl = ['b','b','b','b','b','b'];

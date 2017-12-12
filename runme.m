@@ -7,11 +7,19 @@ close all
 dir = '3D Point Data/';
 fname = 'Box.mat';
 load([dir fname]);
+
 points3D = [X Y Z];
+
+
 %% RANSAC
-[model, FinalPara, Finalscore] = CuboidRANSAC( points3D );
-%% PLot Cuboid with the point cloud.
-DisplayModel(points3D, Finalscore, model);
+[model, CuboidParameters, inlierIndices, outlierIndices] = CuboidRANSAC( points3D );
+
+%% PLot Cuboid with the point cloud where inliers are colored blue, and outliers red.
+scatter3(X(inlierIndices), Y(inlierIndices), Z(inlierIndices),...
+    5, 'b', 'Marker', '.', 'SizeData', 100);
+scatter3(X(outlierIndices), Y(outlierIndices), Z(outlierIndices),...
+    5, 'r', 'Marker', '.', 'SizeData', 100);
+DisplayModel(numel(inlierIndices), model);
 
 
 

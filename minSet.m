@@ -5,54 +5,26 @@ function [output, returnValue, temp, total_cuboids] = minSet( X,Y,Z )
 returnValue = zeros(4,6,1);
 output = 0;
 answerNo = 0;
-no =9;
+no = 9;
 indices = 1:no;
 finalResult = zeros(4,6);
-% pnts = randi(numel(X),no,1);
 pnts=transpose(randperm(numel(X),no));
 temp = [X(pnts),Y(pnts),Z(pnts)];
-Cmb = combnk(1:no,3);
 O = ones(no,1);
-no1 = nchoosek(no,3);
-rslt = zeros(no1,1);
 
-%Finds Convex Hull of 9 points such that rest of the points are on one side.
-for i = 1:no1
-    temp1 = temp(Cmb(i,1),:);
-    temp2 = temp(Cmb(i,2),:);
-    temp3 = temp(Cmb(i,3),:);
-    n = cross((temp2-temp1),(temp3-temp1));
-    if norm(n) == 0
-        rslt(i) = no-5;
-        continue;
-    end
-    n = n/norm(n);
-    d = dot(temp1,n);
-    d=round(d*10^4)/10^4;
-    t = O*n;
-    t1 = sum(temp.*t,2);
-    t1=round(t1*10^4)/10^4;
-    a = t1<d; %no of points that are under under the plane (on the side of origin)
-    c = sum(a);
-    rslt(i) = c;
-end
+%Convex hull of 9 points
+K = convhull(temp);
+num = size(K,1);
 
-
-% disp(sum(rslt ==(no-3))+sum(rslt ==0));
-
-v = (rslt==(no-3)) | (rslt==0);
-indices2 = 1:numel(v);
-v1 = indices2(v); %Legitimate planes
-
-num = numel(v1); %number of legitimate planes
 distMax1 = zeros(1,num);
 planes  = zeros(4,num);
 rslt1 = zeros(num,nchoosek(no-3,2));
+
 %Finds point that is max d away from every plane.
 for i = 1:num
-    temp1 = temp(Cmb(v1(i),1),:);
-    temp2 = temp(Cmb(v1(i),2),:);
-    temp3 = temp(Cmb(v1(i),3),:);
+    temp1 = temp(K(i,1),:);
+    temp2 = temp(K(i,2),:);
+    temp3 = temp(K(i,3),:);
     n = cross((temp2-temp1),(temp3-temp1));% normal Plane1
     if norm(n) == 0
         continue;
@@ -61,7 +33,6 @@ for i = 1:num
     d = dot(temp1,n);
     d=round(d*10^4)/10^4;
     planes(:,i) = transpose([n -d]);
-    %     C = [-n(1)/n(3) -n(2)/n(3) d/n(3)];
     C = [n -d];
     [~, dz] = dist2plane(temp,C);
     A1 =  indices((dz-max(dz))==0);
@@ -69,7 +40,8 @@ for i = 1:num
     n2 = n;
     d2 = dot(n2, temp(distMax1(i),:));
     
-    vec = Cmb((v1(i)),:);
+    vec = K(i,:);
+   
     Rem = ComplemenatryVec( vec, no );
     CmbRem = combnk(Rem,2); %% All size 2 combinations of remaining 6 points
     
@@ -94,18 +66,9 @@ for i = 1:num
             finalResult(:,2) = transpose([n1 -d1]);%2
             finalResult(:,3) = transpose([n2 -d2]);%3
             
-            %             C = [-n1(1)/n1(3) -n1(2)/n1(3) d1/n1(3)];
+            %C = [-n1(1)/n1(3) -n1(2)/n1(3) d1/n1(3)];
             C = [n1 -d1];
             [projections, dz] = dist2plane(temp,C);
-%             if numel(temp( indices( (dz-max(dz))==0),:)) ~= 3
-%                 temp( indices( (dz-max(dz))==0),:)
-%                 dz
-%                 C
-%                 CmbRem
-%                 n1temp
-%                 n1
-%                 k
-%             end
             A2 = indices( (dz-max(dz))==0 );
             d3 = dot(n1, temp( A2(1) ,:) ) ;
             finalResult(:,4) = transpose([n1 -d3]);%4
@@ -123,7 +86,7 @@ for i = 1:num
             finalResult(:,5) = transpose([n4 -d4]);%5
             finalResult(:,6) = transpose([n4 -d5]);%6
             %To see how many points are used in the cuboid
-            vector1 = [Cmb(v1(i),:) CmbRem(k,:) distMax1(i) minNum maxNum A2(1) ];
+            vector1 = [K(i,:) CmbRem(k,:) distMax1(i) minNum maxNum A2(1) ];
             nps = numel(ComplemenatryVec(vector1,no));
             
             if nps == 0
@@ -136,12 +99,7 @@ for i = 1:num
             end
         end
     end
-    
-    
-    
 end
 total_cuboids = sum(sum((rslt1==0) + (rslt1==no-2)));
-% disp(total_cuboids);
-% disp(rslt1); % Rows are plane1 number, Columns show legitimate plane2
 end
 
