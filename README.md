@@ -5,7 +5,9 @@
 
 ## Run:
 
-  Use runme.m to execute the program.
+  Use runme.m to execute the example.
+  
+  The script fits the cuboid on 3D points and displays cuboid model, inliers, and outliers.
 
   Two 3D point-clouds are included: 
  
