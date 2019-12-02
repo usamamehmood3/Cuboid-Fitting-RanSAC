@@ -3,6 +3,8 @@
 # Cuboid-Fitting-RanSAC
 #### RanSAC based cuboid fitting.
 
+[![View Cuboid fit (RANSAC) on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/65168-cuboid-fit-ransac)
+
 ## Run:
 
   Use runme.m to execute the example.
