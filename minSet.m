@@ -2,6 +2,15 @@ function [output, returnValue, temp, total_cuboids] = minSet( X,Y,Z )
 % output is a flag for a valid minset, returnValue contains 6 planes (6x4xi)
 % (cuboid) fit in the minimal set, temp contains min set.
 % total_cuboids = total cuboids fitted in the min. set.
+%
+% Author: Usama Mehmood, Graduate Student, Stony Brook University, NY, US
+% email address: umehmood@cs.stonybrook.edu 
+% Website: https://usamamehmood.weebly.com
+% November 2014; Last revision: 23-Nov-2017
+%
+% Copyright (C) 2014, by Usama Mehmood
+% Work done under supervision of Dr. Sohaib Ahmad Khan 
+%%
 returnValue = zeros(4,6,1);
 output = 0;
 answerNo = 0;

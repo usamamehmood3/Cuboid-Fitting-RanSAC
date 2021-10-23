@@ -1,5 +1,12 @@
 function [ corners ] = para2corner( para )
-
+% Author: Usama Mehmood, Graduate Student, Stony Brook University, NY, US
+% email address: umehmood@cs.stonybrook.edu 
+% Website: https://usamamehmood.weebly.com
+% November 2014; Last revision: 23-Nov-2017
+%
+% Copyright (C) 2014, by Usama Mehmood
+% Work done under supervision of Dr. Sohaib Ahmad Khan 
+%%
 centre = para(1:3);
 scale = para(4:6);
 orientation= para(7:9);

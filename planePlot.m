@@ -1,6 +1,15 @@
 function [ answer ] = planePlot( b , flag )
-%Solves for points of intersection of 6 planes.
-%if flag = 1 then plot the six planes , if zero then do not plot.
+% Solves for points of intersection of 6 planes.
+% if flag = 1 then plot the six planes , if zero then do not plot.
+%
+% Author: Usama Mehmood, Graduate Student, Stony Brook University, NY, US
+% email address: umehmood@cs.stonybrook.edu 
+% Website: https://usamamehmood.weebly.com
+% November 2014; Last revision: 23-Nov-2017
+%
+% Copyright (C) 2014, by Usama Mehmood
+% Work done under supervision of Dr. Sohaib Ahmad Khan 
+%%
 answer = zeros(20,3);
 normals = b(1:3,:);
 normals = transpose(normals);

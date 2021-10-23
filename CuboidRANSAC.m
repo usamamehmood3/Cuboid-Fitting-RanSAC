@@ -20,7 +20,11 @@ function [model, CuboidParameters, inlierIndices, outlierIndices] = CuboidRANSAC
 % Author: Usama Mehmood, Graduate Student, Stony Brook University, NY, US
 % email address: umehmood@cs.stonybrook.edu 
 % Website: https://usamamehmood.weebly.com
-% Novemnber 2014; Last revision: 23-Nov-2017
+% November 2014; Last revision: 23-Nov-2017
+%
+% Copyright (C) 2014, by Usama Mehmood
+% Work done under supervision of Dr. Sohaib Ahmad Khan 
+%%
 %------------- BEGIN CODE --------------
 X = points3D(:, 1);
 Y = points3D(:, 2);

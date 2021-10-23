@@ -1,5 +1,12 @@
 function [ para ] = corner2para( corners)
-
+% Author: Usama Mehmood, Graduate Student, Stony Brook University, NY, US
+% email address: umehmood@cs.stonybrook.edu 
+% Website: https://usamamehmood.weebly.com
+% November 2014; Last revision: 23-Nov-2017
+%
+% Copyright (C) 2014, by Usama Mehmood
+% Work done under supervision of Dr. Sohaib Ahmad Khan 
+%%
 i = corners(4,:)-corners(2,:);
 j = corners(1,:)-corners(2,:);
 k = corners(6,:)-corners(2,:);

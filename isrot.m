@@ -10,7 +10,8 @@ function [out, varargout] = isrot(r)
 % See also: ISTWIST, ISSKEW, ISHOM.
 
 % $Id: isrot.m,v 1.1 2009-03-17 16:40:18 bradleyk Exp $
-% Copyright (C) 2005, by Brad Kratochvil
+% Copyright (C) 2005, by Brad Kratochvil ---
+%%
 
   global DebugLevel;
 

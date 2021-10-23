@@ -1,5 +1,14 @@
 function [result] = boundTest(X,Y,Z,pp,corners)
-%corner: four 3d corners of a rectangle 4x3
+% corners: four 3d corners of a rectangle 4x3
+%
+% Author: Usama Mehmood, Graduate Student, Stony Brook University, NY, US
+% email address: umehmood@cs.stonybrook.edu 
+% Website: https://usamamehmood.weebly.com
+% November 2014; Last revision: 23-Nov-2017
+%
+% Copyright (C) 2014, by Usama Mehmood
+% Work done under supervision of Dr. Sohaib Ahmad Khan 
+%%
 d1 = corners(1,:)-corners(2,:);
 d2 = corners(3,:)-corners(2,:);
 
